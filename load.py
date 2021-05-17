@@ -39,5 +39,38 @@ def load_corpus() -> dict:
 
     return data
 
-data = load_corpus()
-#spacy_stopwords = spacy.load("en_core_web_sm").Defaults.stop_words
+def extract_tfidf(file_contents: list):
+    """
+    Args:
+        file_contents: list of strings
+
+    Returns:
+        sparse tfidf numpy array 
+    """ 
+    # returns tfidf matrix as coo sparse 
+    
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    
+    min_df = 1 # ignore tokens that appear in only one file
+    max_df = 0.25 # ignore tokens that appear in more than 90% of files
+    
+    vectorizer = TfidfVectorizer(input = file_contents,
+                    strip_accents = "unicode",
+                    lowercase = True,
+                    ngram_range = (1, 1),
+                    analyzer = "word",
+                    max_df = max_df, # ignore terms that appear in more than this prop. of docs,
+                    min_df = min_df,
+                    stop_words = "english", # can pass custom list
+                    norm = "l2", # scale rows to unit norm
+                    use_idf = True,
+                    smooth_idf = True, # add 1 to document frequencies
+                    sublinear_tf = False # replace tf with 1 + log(tf)
+                   )
+    # attributes of vectorizer:
+    #     vocabulary_ -> dict mapping terms to feature indices
+    #     idf_ -> inverse document frequency vector
+    #     stop_words -> list of words ignored
+    s_tfidf = vectorizer.fit_transform(file_contents) # row-normalized tfidf matrix (sparse)
+    
+    return s_tfidf
