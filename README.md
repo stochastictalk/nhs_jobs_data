@@ -41,4 +41,8 @@ s_tfidf = extract_tfidf(list_of_job_descriptions) # tfidf matrix
 
 ## Scraper
 
-Run `python example.py` to scrape the records from the NHS Jobs website. If it fails, you may need to change the cookie it uses - edit `example.py` according to its instructions to do this. You can scrape a subset of records by following the instructions for changing the cookie.
+Run `python example.py` to scrape the records from the NHS Jobs website.
+
+If it fails, you may need to change the cookie it uses. Edit `example.py` according to its instructions to do this.
+
+You can scrape a subset of records by following the instructions for changing the cookie.
