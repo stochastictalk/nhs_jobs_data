@@ -2,7 +2,7 @@
 
 This repo contains two things: a web scraper for the NHS Jobs dataset, and an instance of the dataset that this scraper generates.
 
-## `conda` virtual environment
+## Prerequisite: `conda` virtual environment
 
 To use the Python scripts in this repo you need to install some dependencies. `requirements.txt` lists these for Windows. I don't know whether these requirements will be sufficient for Mac/Linux (probably not).
 
