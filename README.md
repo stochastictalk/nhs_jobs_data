@@ -4,7 +4,7 @@
 
 The function `load_corpus()` in `load.py` loads the records from the JSON files into a Python dictionary.
 
-The keys of this dictionary are IDs and the value is a dictionary of attributes. 
+A key in this dictionary is an integer ID, with associated value that is a dictionary of record attributes. 
 
 Attributes for each record include:
 * `title`: the title of the vacancy.
