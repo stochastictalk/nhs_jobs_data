@@ -6,6 +6,7 @@ import re
 import os
 import pandas as pd
 from tqdm import tqdm
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 def clean_text(s: str) -> str:
     """ For cleaning the "description" field of an NHS Jobs record.
@@ -49,9 +50,8 @@ def extract_tfidf(file_contents: list):
         file_contents: list of strings
 
     Returns:
-        sparse tfidf numpy array 
+        sparse (CSR) tfidf numpy array 
     """ 
-    # returns tfidf matrix as coo sparse 
     
     from sklearn.feature_extraction.text import TfidfVectorizer
     
