@@ -1,6 +1,6 @@
 # NHS Jobs Data
 
-This repo contains two things: a web scraper for the NHS Jobs dataset, and an instance of the dataset that this scraper generates.
+This repo contains two things: a web scraper for the NHS Jobs website (http://www.jobs.nhs.uk/), and an instance of the dataset that this scraper generates.
 
 ## Prerequisite: `conda` virtual environment
 
