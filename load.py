@@ -4,6 +4,7 @@ import unicodedata
 import html
 import re
 import os
+import pandas as pd
 from tqdm import tqdm
 
 def clean_text(s: str) -> str:
@@ -16,9 +17,9 @@ def clean_text(s: str) -> str:
     s = re.sub(r"<[^<]+?>", "", s) # otherwise strip HTML tags
     return s
 
-def load_corpus() -> dict:
-    """ Returns a dictionary where each entry corresponds to one NHS
-        Jobs record.
+def load_corpus(return_as_df=True):
+    """ Returns a dictionary/pandas DataFrame where each entry corresponds to 
+        one NHS Jobs record.
     """
     filepaths = glob(os.path.join(".", "data", "*.json"))
     data = {}
@@ -37,7 +38,10 @@ def load_corpus() -> dict:
             "hiring-org": record_dct["hiringOrganization"]["name"]
         } 
 
-    return data
+    if return_as_df: 
+        return pd.DataFrame.from_dict(data, orient="index")
+    else:
+        return data
 
 def extract_tfidf(file_contents: list):
     """
